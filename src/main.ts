@@ -12,10 +12,7 @@ async function bootstrap() {
 
   // Register CORS middleware
   await fastifyAdapter.register(cors, {
-    origin: ['http://localhost:3000',
-      'https://smart-prix-xlqf-cis0us965-blackmamba1231s-projects.vercel.app',
-      'https://cloneable-prix.vercel.app'
-    ], // Allow only this origin
+    origin: '*', // Allow only this origin
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
   });
 
