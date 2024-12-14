@@ -11,7 +11,7 @@ async function bootstrap() {
     await fastifyAdapter.register(cors_1.default, {
         origin: ['http://localhost:3000',
             'https://smart-prix-xlqf-cis0us965-blackmamba1231s-projects.vercel.app',
-            'https://smart-prix-xlqf.vercel.app'
+            'https://cloneable-prix.vercel.app'
         ],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
     });
