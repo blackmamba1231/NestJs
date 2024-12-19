@@ -41,7 +41,8 @@ export class Account extends Document {
   phone: string;
   @Prop()
   comments: string;
-
+  @Prop()
+  DateCreated: Date;
   @Prop()
   replies: string;
 

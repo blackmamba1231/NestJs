@@ -11,7 +11,9 @@ import * as speakeasy from 'speakeasy';
 import * as jwt from 'jsonwebtoken';
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private userModel: Model<User> ,@InjectModel(Account.name) private accountModel: Model<Account>,@InjectModel (orders.name) private orderModel: Model<orders>, @InjectModel (Transactions.name) private transactionModel: Model<Transactions>) {}
+  constructor(@InjectModel(User.name) private userModel: Model<User>,
+ @InjectModel(Account.name) private accountModel: Model<Account>,@InjectModel (orders.name) private orderModel: Model<orders>, @InjectModel (Transactions.name) private transactionModel: Model<Transactions>) {}
+   
    
   async signup(createUserDto: CreateUserDto) {
     const { email, password, name, phone, referalcode } = createUserDto;
@@ -96,6 +98,7 @@ export class UserService {
  
     try{if(!user || !user.otp ){
       throw new Error('User not found');
+
   }
   if(user.otpExpiresAt < new Date()){
       throw new Error('OTP expired');
@@ -113,7 +116,7 @@ export class UserService {
   console.log(user.email);
   console.log(user.Verified);
   const referalcode = this.generateReferralCode();
-  const Account = new this.accountModel({referredby: user.referredby, email, password: hashedPassword, name: user.name, phone: user.phone, earned: 0, pending: 0, paid: 0, rejected: 0, cashback: 0,referalcode: referalcode , referalearning: 0});
+  const Account = new this.accountModel({referredby: user.referredby,DateCreated: new Date(), email, password: hashedPassword, name: user.name, phone: user.phone, earned: 0, pending: 0, paid: 0, rejected: 0, cashback: 0,referalcode: referalcode , referalearning: 0});
   await Account.save();
   console.log(Account);
   const useremail = Account.email;
@@ -159,6 +162,7 @@ export class UserService {
        throw new Error('User not found');
      }
      const order = await this.orderModel.create({ ReferralName: ReferralName, amount: amount, createdat: new Date(), type: type });
+    
      if(user.referredby!==""){
       const referrer = await this.accountModel.findOne({ refferedby: user.referredby });
       if(referrer){
@@ -177,6 +181,8 @@ export class UserService {
      }
      return order;
   }
+  
+  
   async payment(bearerToken: string){
     let decodedToken:any;
     try{

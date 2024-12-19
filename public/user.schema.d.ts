@@ -15,6 +15,7 @@ export declare class Account extends Document {
     name: string;
     phone: string;
     comments: string;
+    DateCreated: Date;
     replies: string;
     savedpostids: string;
     country: string;

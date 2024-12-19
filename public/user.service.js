@@ -125,7 +125,7 @@ let UserService = class UserService {
             console.log(user.email);
             console.log(user.Verified);
             const referalcode = this.generateReferralCode();
-            const Account = new this.accountModel({ referredby: user.referredby, email, password: hashedPassword, name: user.name, phone: user.phone, earned: 0, pending: 0, paid: 0, rejected: 0, cashback: 0, referalcode: referalcode, referalearning: 0 });
+            const Account = new this.accountModel({ referredby: user.referredby, DateCreated: new Date(), email, password: hashedPassword, name: user.name, phone: user.phone, earned: 0, pending: 0, paid: 0, rejected: 0, cashback: 0, referalcode: referalcode, referalearning: 0 });
             await Account.save();
             console.log(Account);
             const useremail = Account.email;
@@ -213,6 +213,7 @@ exports.UserService = UserService = __decorate([
     __param(1, (0, mongoose_1.InjectModel)(user_schema_2.Account.name)),
     __param(2, (0, mongoose_1.InjectModel)(user_schema_1.orders.name)),
     __param(3, (0, mongoose_1.InjectModel)(user_schema_1.Transactions.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model, mongoose_2.Model, mongoose_2.Model, mongoose_2.Model])
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        mongoose_2.Model, mongoose_2.Model, mongoose_2.Model])
 ], UserService);
 //# sourceMappingURL=user.service.js.map

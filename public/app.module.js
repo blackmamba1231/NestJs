@@ -14,8 +14,15 @@ const config_1 = require("@nestjs/config");
 const mongoose_1 = require("@nestjs/mongoose");
 const common_1 = require("@nestjs/common");
 const auth_middleware_1 = require("./auth.middleware");
-const serve_static_1 = require("@nestjs/serve-static");
-const path_1 = require("path");
+const google_analytics_controller_1 = require("./google-analytics.controller");
+const google_analytics_service_1 = require("./google-analytics.service");
+const user_analytics_schema_1 = require("./user-analytics.schema");
+const earnings_schema_1 = require("./earnings.schema");
+const referrals_schema_1 = require("./referrals.schema");
+const user_schema_1 = require("./user.schema");
+const store_controller_1 = require("./store.controller");
+const store_service_1 = require("./store.service");
+const store_schema_1 = require("./store.schema");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
@@ -26,15 +33,26 @@ let AppModule = class AppModule {
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [user_module_1.UserModule,
-            serve_static_1.ServeStaticModule.forRoot({
-                rootPath: (0, path_1.join)(__dirname, '..', 'public'),
-            }),
+        imports: [
+            mongoose_1.MongooseModule.forFeature([
+                { name: user_analytics_schema_1.userAnalytics.name, schema: user_analytics_schema_1.UserAnalyticsSchema
+                }, { name: user_schema_1.Account.name, schema: user_schema_1.AccountSchema },
+                { name: earnings_schema_1.earnings.name, schema: earnings_schema_1.EarningsSchema },
+                { name: referrals_schema_1.referral.name, schema: referrals_schema_1.ReferralSchema },
+                { name: store_schema_1.Store.name, schema: store_schema_1.StoreSchema }
+            ]),
+            user_module_1.UserModule,
             config_1.ConfigModule.forRoot(),
             mongoose_1.MongooseModule.forRoot(process.env.MONGO_URI),
         ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        controllers: [app_controller_1.AppController,
+            google_analytics_controller_1.GoogleAnalyticsController,
+            store_controller_1.StoreController,
+        ],
+        providers: [app_service_1.AppService,
+            google_analytics_service_1.GoogleAnalyticsService,
+            store_service_1.StoreService,
+        ],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

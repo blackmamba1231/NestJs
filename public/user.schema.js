@@ -75,6 +75,10 @@ __decorate([
 ], Account.prototype, "comments", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], Account.prototype, "DateCreated", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Account.prototype, "replies", void 0);
 __decorate([
