@@ -13,7 +13,6 @@ const user_module_1 = require("./user.module");
 const config_1 = require("@nestjs/config");
 const mongoose_1 = require("@nestjs/mongoose");
 const common_1 = require("@nestjs/common");
-const auth_middleware_1 = require("./auth.middleware");
 const google_analytics_controller_1 = require("./google-analytics.controller");
 const google_analytics_service_1 = require("./google-analytics.service");
 const user_analytics_schema_1 = require("./user-analytics.schema");
@@ -23,12 +22,8 @@ const user_schema_1 = require("./user.schema");
 const store_controller_1 = require("./store.controller");
 const store_service_1 = require("./store.service");
 const store_schema_1 = require("./store.schema");
+const cloudinary_module_1 = require("./cloudinary.module");
 let AppModule = class AppModule {
-    configure(consumer) {
-        consumer
-            .apply(auth_middleware_1.AuthMiddleware)
-            .forRoutes('auth/payment');
-    }
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
@@ -41,6 +36,7 @@ exports.AppModule = AppModule = __decorate([
                 { name: referrals_schema_1.referral.name, schema: referrals_schema_1.ReferralSchema },
                 { name: store_schema_1.Store.name, schema: store_schema_1.StoreSchema }
             ]),
+            cloudinary_module_1.CloudinaryModule,
             user_module_1.UserModule,
             config_1.ConfigModule.forRoot(),
             mongoose_1.MongooseModule.forRoot(process.env.MONGO_URI),

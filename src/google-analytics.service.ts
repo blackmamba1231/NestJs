@@ -21,7 +21,7 @@ export class GoogleAnalyticsService {
 
   private async authenticate() {
     const auth: any = new google.auth.GoogleAuth({
-      keyFile: process.env.GA_SERVICE_ACCOUNT_KEY_PATH, // use env variable
+      keyFile: process.env.GA_SERVICE_ACCOUNT_KEY_PATH , // use env variable
       scopes: ['https://www.googleapis.com/auth/analytics.readonly'],
     });
 

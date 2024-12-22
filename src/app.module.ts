@@ -15,6 +15,7 @@ import { Account, AccountSchema } from './user.schema';
 import { StoreController } from './store.controller';
 import { StoreService } from './store.service';
 import { Store, StoreSchema } from './store.schema';
+import { CloudinaryModule } from './cloudinary.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { Store, StoreSchema } from './store.schema';
       { name: referral.name, schema: ReferralSchema },
       { name: Store.name , schema: StoreSchema}
     ]),
+    CloudinaryModule,
     UserModule,
     ConfigModule.forRoot(), 
     MongooseModule.forRoot(process.env.MONGO_URI),
@@ -39,9 +41,5 @@ import { Store, StoreSchema } from './store.schema';
   ],
 })
 export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(AuthMiddleware) 
-      .forRoutes('auth/payment'); 
-  }
+  
 }

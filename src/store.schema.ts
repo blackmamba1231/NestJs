@@ -20,11 +20,20 @@ export class Store extends Document {
   @Prop({})
   categories: string[];
   @Prop({})
-  priority: string;
+  priority: number;
   @Prop({})
   CashbackRate: string;
-  @Prop({ required: true })
+  @Prop({ })
   revenue: number;
+  @Prop({})
+  ApiKey: string;
+  @Prop({required: true})
+  StoreContactPersonName: string;
+  @Prop({required: true})
+  StorePersonEmail: string;
+  @Prop({required: true})
+  StorePersonPhone: string;
+
   @Prop({})
   storeBannerImage: string;
   @Prop({})
@@ -33,6 +42,8 @@ export class Store extends Document {
   MetaDescription: string;
   @Prop({ required: true })
   clicks: number;
+  @Prop({ required: true})
+  AffiliateNetwork: string;
 
   @Prop({ required: true })
   conversionRate: number;

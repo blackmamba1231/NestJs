@@ -49,7 +49,7 @@ __decorate([
 ], Store.prototype, "categories", void 0);
 __decorate([
     (0, mongoose_1.Prop)({}),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Store.prototype, "priority", void 0);
 __decorate([
     (0, mongoose_1.Prop)({}),
@@ -59,6 +59,22 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", Number)
 ], Store.prototype, "revenue", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Store.prototype, "ApiKey", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Store.prototype, "StoreContactPersonName", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Store.prototype, "StorePersonEmail", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Store.prototype, "StorePersonPhone", void 0);
 __decorate([
     (0, mongoose_1.Prop)({}),
     __metadata("design:type", String)
@@ -75,6 +91,10 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", Number)
 ], Store.prototype, "clicks", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Store.prototype, "AffiliateNetwork", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", Number)

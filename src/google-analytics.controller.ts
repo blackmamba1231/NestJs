@@ -1,12 +1,10 @@
 import { Controller, Get, Query, Res } from '@nestjs/common';
 import { GoogleAnalyticsService } from './google-analytics.service';
-import { Response } from 'express';
 
 @Controller('analytics')
 export class GoogleAnalyticsController {
   constructor(private readonly googleAnalyticsService: GoogleAnalyticsService) {}
 
-  // Endpoint to fetch user analytics
   @Get('user-analytics')
   async fetchUserAnalytics(
     @Query('startDate') startDate: string,
