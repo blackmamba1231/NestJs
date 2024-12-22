@@ -56,11 +56,11 @@ __decorate([
     __metadata("design:type", String)
 ], Store.prototype, "CashbackRate", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
+    (0, mongoose_1.Prop)({}),
     __metadata("design:type", Number)
 ], Store.prototype, "revenue", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
+    (0, mongoose_1.Prop)({}),
     __metadata("design:type", String)
 ], Store.prototype, "ApiKey", void 0);
 __decorate([

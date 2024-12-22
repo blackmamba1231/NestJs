@@ -24,6 +24,10 @@ let StoreService = class StoreService {
     async getAllStores() {
         return this.storeModel.find().exec();
     }
+    async createStore(createStoreDto) {
+        const createdStore = new this.storeModel(createStoreDto);
+        return createdStore.save();
+    }
 };
 exports.StoreService = StoreService;
 exports.StoreService = StoreService = __decorate([

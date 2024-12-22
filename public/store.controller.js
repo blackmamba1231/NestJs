@@ -8,16 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StoreController = void 0;
 const common_1 = require("@nestjs/common");
 const store_service_1 = require("./store.service");
+const create_store_dto_1 = require("./create-store.dto");
 let StoreController = class StoreController {
     constructor(storeService) {
         this.storeService = storeService;
     }
     async getAllStores() {
         return this.storeService.getAllStores();
+    }
+    async createStore(createStoreDto) {
+        return this.storeService.createStore(createStoreDto);
     }
 };
 exports.StoreController = StoreController;
@@ -27,6 +34,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], StoreController.prototype, "getAllStores", null);
+__decorate([
+    (0, common_1.Post)('create'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_store_dto_1.CreateStoreDto]),
+    __metadata("design:returntype", Promise)
+], StoreController.prototype, "createStore", null);
 exports.StoreController = StoreController = __decorate([
     (0, common_1.Controller)('stores'),
     __metadata("design:paramtypes", [store_service_1.StoreService])
